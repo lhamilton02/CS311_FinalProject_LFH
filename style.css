@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+div {
+    margin: 20px 0;
+}
+
+input {
+    padding: 10px;
+    margin-right: 5px;
+}
+
+.converter-container {
+    max-width: 400px;
+    margin: auto;
+}
+
+.red-bar {
+    color: white;
+    text-align: right;
+    padding: 5px;
+    font-size: 10px;
+    width: 100%;
+    position: fixed;
+}
+
+.black-bar {
+    color: white;
+    text-align: Center;
+    padding: 12px;
+    font-size: 25px;
+    width: 100%;
+    position: fixed;
+}
+
+
+.red-bar {
+    background-color: rgb(71, 0, 0);
+    bottom: 0;
+}
+
+.black-bar {
+    background-color: black;
+    top: 0;
+}
+
+.conversion-options {
+    background-color: rgb(245, 245, 245);
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    color: rgb(2, 0, 94);
+}
