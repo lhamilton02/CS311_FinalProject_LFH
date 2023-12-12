@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        div {
+            margin: 20px 0;
+        }
+
+        input {
+            padding: 10px;
+            margin-right: 5px;
+        }
+
+        .converter-container {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .red-bar {
+            color: white;
+            text-align: right;
+            padding: 5px;
+            font-size: 10px;
+            width: 100%;
+            position: fixed;
+            background-color: rgb(71, 0, 0);
+            bottom: 0;
+        }
+
+        .black-bar {
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 25px;
+            width: 100%;
+            position: fixed;
+            background-color: black;
+            top: 0;
+        }
+
+        .conversion-options {
+            background-color: rgb(245, 245, 245);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            color: rgb(2, 0, 94);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="black-bar">
+        Unit Converter
+    </div>
+
+    <div class="converter-container">
+        <label for="inputValue">Please Enter Value:</label>
+        <input type="number" id="inputValue">
+
+        <div class="conversion-options">
+            <fieldset>
+                <legend>Select Conversion:</legend>
+                <label><input type="radio" name="conversion" value="metersToFeet"> Meters to Feet</label>
+                <label><input type="radio" name="conversion" value="feetToMeters"> Feet to Meters<br>
+                <label><input type="radio" name="conversion" value="kilometersToMiles"> Kilometers to Miles</label>
+                <label><input type="radio" name="conversion" value="milesToKilometers"> Miles to Kilometers<br>
+                <label><input type="radio" name="conversion" value="celsiusToFahrenheit"> Celsius to Fahrenheit</label>
+                <label><input type="radio" name="conversion" value="fahrenheitToCelsius"> Fahrenheit to Celsius<br>
+                <label><input type="radio" name="conversion" value="kilogramToPounds"> Kilograms to Pounds</label>
+                <label><input type="radio" name="conversion" value="poundsToKilogram"> Pounds to Kilograms<br>
+                <label><input type="radio" name="conversion" value="gramsToOunces"> Grams to Ounces</label>
+                <label><input type="radio" name="conversion" value="ouncesToGrams"> Ounces to Grams<br>
+            </fieldset>
+        </div>
+
+        <button onclick="convert()">Click to calculate conversion</button>
+        <input type="text" id="result" readonly>
+    </div>
+
+    <footer class="red-bar">
+        <p>Final Project<br>CS311-ON<br>Application Development in Visual Languages</p>
+    </footer>
+
+    <script>
+        function convert() {
+            var inputValue = parseFloat(document.getElementById("inputValue").value);
+            var conversionType = document.querySelector('input[name="conversion"]:checked');
+            var result = document.getElementById("result");
+
+            // Check if input value is empty
+            if (isNaN(inputValue)) {
+                result.value = "Please enter value above.";
+                return;
+            }
+
+            // Check if a conversion type is selected
+            if (!conversionType) {
+                result.value = "Please select conversion";
+                return;
+            }
+
+            switch (conversionType.value) {
+                case "metersToFeet":
+                    result.value = inputValue * 3.28084;
+                    break;
+                case "feetToMeters":
+                    result.value = inputValue / 3.28084;
+                    break;
+                case "kilometersToMiles":
+                    result.value = inputValue * 0.621371;
+                    break;
+                case "milesToKilometers":
+                    result.value = inputValue / 0.621371;
+                    break;
+                case "celsiusToFahrenheit":
+                    result.value = (inputValue * 9 / 5) + 32;
+                    break;
+                case "fahrenheitToCelsius":
+                    result.value = (inputValue - 32) * 5 / 9;
+                    break;
+                case "kilogramToPounds":
+                    result.value = inputValue * 2.20462;
+                    break;
+                case "poundsToKilogram":
+                    result.value = inputValue / 2.20462;
+                    break;
+                case "gramsToOunces":
+                    result.value = inputValue * 0.03527396;
+                    break;
+                case "ouncesToGrams":
+                    result.value = inputValue / 0.03527396;
+                    break;
+                default:
+                    result.value = "Invalid conversion";
+            }
+        }
+    </script>
+</body>
+
+</html>
